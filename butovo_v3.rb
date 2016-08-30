@@ -167,7 +167,7 @@ if choice == "1"
       puts Result.answer 3
       abort
       # если на часах больше 22:00 и меньше 8:00 то никто не приезджает (все спят)
-    elsif random_drop == 2 && t.hour >= 8 && t.hour < 22
+    elsif random_drop == 2 && t.hour.between?(8, 22)
       puts Answer.question 6
 
       choice = STDIN.gets.chomp
@@ -232,7 +232,7 @@ elsif choice == "2"
     puts Result.answer 3
     abort
     # если на часах больше 22:00 и меньше 8:00 то никто не приезджает (все спят)
-  elsif random_drop == 2 && t.hour >= 8 && t.hour < 22
+  elsif random_drop == 2 && t.hour.between?(8, 22)
     puts Answer.question 6
 
     choice = STDIN.gets.chomp
