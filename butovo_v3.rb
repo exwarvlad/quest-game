@@ -101,9 +101,7 @@ if choice == "4" || choice2 == "3"
   puts "Лохи грустно расстались с курточками"
   puts Answer.question 4
 
-
   choice = STDIN.gets.chomp until choice == "1" || choice == "2" || choice == "3"
-
 
   if choice == "1" || choice == "2"
     puts
@@ -118,7 +116,6 @@ if choice == "4" || choice2 == "3"
     choice = nil
 
     choice = STDIN.gets.chomp until choice == "1" || choice == "2" || choice == "3"
-
   else
     puts
 
@@ -129,7 +126,6 @@ if choice == "4" || choice2 == "3"
     abort
   end
 end
-
 
 if choice == "1"
   puts
@@ -263,7 +259,6 @@ elsif choice == "2"
     puts Result.answer 6
     abort
   end
-
 end
 
 
