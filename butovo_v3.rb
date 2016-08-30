@@ -162,12 +162,12 @@ if choice == "1"
 
     if random_drop == 0
       puts Result.answer 2
-      abort
+
     elsif random_drop == 1
       puts Result.answer 3
-      abort
+
       # если на часах больше 22:00 и меньше 8:00 то никто не приезджает (все спят)
-    elsif random_drop == 2 && t.hour.between?(8, 22)
+    elsif (random_drop == 2 || random_drop == 0) && t.hour.between?(8, 22)
       puts Answer.question 6
 
       choice = STDIN.gets.chomp
@@ -182,7 +182,7 @@ if choice == "1"
         budlost = 0
 
         abort print_budlost(budlost).to_s
-      elsif choice.upcase == "LEAVEMEALONE" # чит против копов
+      elsif choice.upcase == "LEVEMEALONE" # чит против копов
         abort "Полицейские забыли зачем подходили и вы с ребятами спокойно двинули дальше" # result 5
       else
         puts Result.answer 4
@@ -227,12 +227,12 @@ elsif choice == "2"
 
   if random_drop == 0
     puts Result.answer 2
-    abort
+
   elsif random_drop == 1
     puts Result.answer 3
-    abort
+
     # если на часах больше 22:00 и меньше 8:00 то никто не приезджает (все спят)
-  elsif random_drop == 2 && t.hour.between?(8, 22)
+  elsif (random_drop == 2 || random_drop == 0) && t.hour.between?(8, 22)
     puts Answer.question 6
 
     choice = STDIN.gets.chomp
@@ -247,7 +247,7 @@ elsif choice == "2"
       budlost = 0
 
       abort print_budlost(budlost).to_s
-    elsif choice.upcase == "LEAVEMEALONE" # чит против копов
+    elsif choice.upcase == "LEVEMEALONE" # чит против копов
       puts Result.answer 5
       abort
     else
