@@ -16,6 +16,9 @@ require_relative 'print_budlost.rb'
 require_relative 'lib/answer.rb'
 require_relative 'lib/result.rb'
 
+answer = Answer.new
+result = Result.new
+
 puts
 
 budlost = 30 # стартовое кол-во быдлости
@@ -25,7 +28,7 @@ print_budlost(budlost) # метод показывает кол-во быдло�
 puts "Вы с пацанами решили прогуляться в Южом Бутово
 и наткнулись на неспортивных лохов"
 
-puts Answer.question 1
+puts answer.answer1
 
 choice = STDIN.gets.chomp until choice == "1" || choice == "2" || choice == "3" ||
     choice == "4"
@@ -50,7 +53,7 @@ elsif choice == "2" || choice == "3"
 end
 
 if choice == "1"
-  puts Answer.question 2
+  puts answer.answer2
 
   choice = nil # если дошло сюда, надо сбросить choice
 
@@ -59,7 +62,7 @@ if choice == "1"
   puts
 
 elsif choice == "2" || choice == "3"
-  puts Answer.question 3
+  puts answer.answer3
 
   choice = nil
 
@@ -72,7 +75,7 @@ elsif choice == "2" || choice == "3"
 
     print_budlost(budlost)
 
-    puts Result.answer 1
+    puts result.result1
     abort
   end
 end
@@ -85,7 +88,7 @@ if choice2 == "1" || choice2 == "2"
   print_budlost(budlost)
 
   puts "Лохи расступились, главный вышел и промямлил \"нету\""
-  puts Answer.question 3
+  puts answer.answer3
 
   choice = STDIN.gets.chomp until choice == "1" || choice == "2" || choice == "3"
 end
@@ -99,7 +102,7 @@ if choice == "4" || choice2 == "3"
   print_budlost(budlost)
 
   puts "Лохи грустно расстались с курточками"
-  puts Answer.question 4
+  puts answer.answer4
 
   choice = STDIN.gets.chomp until choice == "1" || choice == "2" || choice == "3"
 
@@ -111,7 +114,7 @@ if choice == "4" || choice2 == "3"
     print_budlost(budlost)
 
     puts "Лохи расступились, главный вышел и промямлил \"нету\""
-    puts Answer.question 3
+    puts answer.answer3
 
     choice = nil
 
@@ -122,7 +125,7 @@ if choice == "4" || choice2 == "3"
     budlost -= 5
 
     print_budlost(budlost)
-    puts Result.answer 1
+    puts result.result1
     abort
   end
 end
@@ -139,7 +142,7 @@ if choice == "1"
 
   sleep 2
 
-  puts Answer.question 5
+  puts answer.answer5
 
   choice = nil
 
@@ -157,21 +160,21 @@ if choice == "1"
     t = Time.now # инсцилизирую время
 
     if random_drop == 0
-      puts Result.answer 2
+      puts result.result2
 
     elsif random_drop == 1
-      puts Result.answer 3
+      puts result.result3
 
       # если на часах больше 22:00 и меньше 8:00 то никто не приезджает (все спят)
     elsif (random_drop == 2 || random_drop == 0) && t.hour.between?(8, 22)
-      puts Answer.question 6
+      puts answer.answer6
 
       choice = STDIN.gets.chomp
 
       puts
 
       if choice == "1"
-        puts Result.answer 4
+        puts result.result4
 
         puts
 
@@ -179,18 +182,17 @@ if choice == "1"
 
         abort print_budlost(budlost).to_s
       elsif choice.upcase == "LEVEMEALONE" # чит против копов
-        abort "Полицейские забыли зачем подходили и вы с ребятами спокойно двинули дальше" # result 5
+        puts result.result5
+        abort
       else
-        puts Result.answer 4
-
-        puts
+        puts result.result4
 
         budlost = 0
 
         abort print_budlost(budlost).to_s
       end
     elsif random_drop == 2 # если день
-      puts Result.answer 6
+      puts result.result6
       abort
     end
 
@@ -199,7 +201,7 @@ if choice == "1"
 
     print_budlost(budlost)
 
-    puts Result.answer 1
+    puts result.result1
 
   end
 elsif choice == "3"
@@ -209,7 +211,7 @@ elsif choice == "3"
 
   print_budlost(budlost)
 
-  puts Result.answer 1
+  puts result.result1
 
 elsif choice == "2"
   budlost += 30
@@ -222,21 +224,21 @@ elsif choice == "2"
 
 
   if random_drop == 0
-    puts Result.answer 2
+    puts result.result2
 
   elsif random_drop == 1
-    puts Result.answer 3
+    puts result.result3
 
     # если на часах больше 22:00 и меньше 8:00 то никто не приезджает (все спят)
   elsif (random_drop == 2 || random_drop == 0) && t.hour.between?(8, 22)
-    puts Answer.question 6
+    puts answer.answer6
 
     choice = STDIN.gets.chomp
 
     puts
 
     if choice == "1"
-      puts Result.answer 4
+      puts result.result4
 
       puts
 
@@ -244,10 +246,10 @@ elsif choice == "2"
 
       abort print_budlost(budlost).to_s
     elsif choice.upcase == "LEVEMEALONE" # чит против копов
-      puts Result.answer 5
+      puts result.result5
       abort
     else
-      puts Result.answer 4
+      puts result.result4
 
       puts
 
@@ -256,7 +258,7 @@ elsif choice == "2"
       abort print_budlost(budlost).to_s
     end
   elsif random_drop == 2 # если день
-    puts Result.answer 6
+    puts result.result6
     abort
   end
 end
