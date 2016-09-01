@@ -11,7 +11,7 @@ class Result
       f1.close
       @result = f2
     rescue Errno::ENOENT
-      @result = abort "Файл /data/results/result_0#{amount} пофрежден или небыл найден"
+      @result = abort "Файл /data/results/result_0#{amount}.txt пофрежден или небыл найден"
     end
   end
 end
